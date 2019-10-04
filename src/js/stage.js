@@ -1,7 +1,9 @@
 class Stage{
-    constructor(width, height){
+    constructor(width, height, pacman){
         this.width = width,
-        this.height = height
+        this.height = height,
+        this.entities = [],
+        this.pacman = pacman
     }
 
     render() {
@@ -13,5 +15,16 @@ class Stage{
     mount(parent){
         this.render();
         parent.appendChild(this.element);
+    }
+    addEntity(entity){
+        this.entities.push(entity);
+    }
+    collisionDetection(x, y){
+        for(const item of this.entities){
+            if(item.x === x && item.y === y){
+                return item;
+            }
+        }
+        return null;
     }
 }
