@@ -25,26 +25,26 @@ document.addEventListener( 'DOMContentLoaded', () => {
   // console.log( stage.collisionDetection( 2, 2 ) )
 
   // stage.removeEntity(bomb);
-  fetch(`http://bootcamp.podlomar.org/api/pacman?width=${width}&height=${height}`)
-    .then( response => response.json())
-    .then(item => {
-      console.log(item)
-      console.log(item.walls)
-      for(const wall of item.walls){
-        const wallElem = new Entity(wall.x, wall.y, 'wall');
-        wallElem.mount(stageArea);
-        stage.addEntity(wallElem);
+  fetch( `http://bootcamp.podlomar.org/api/pacman?width=${width}&height=${height}` )
+    .then( response => response.json() )
+    .then( item => {
+      console.log( item )
+      console.log( item.walls )
+      for ( const wall of item.walls ) {
+        const wallElem = new Entity( wall.x, wall.y, 'wall' );
+        wallElem.mount( stageArea );
+        stage.addEntity( wallElem );
       }
-      for(const apple of item.apples){
-        const appleElem = new Entity(apple.x, apple.y, 'apple');
-        appleElem.mount(stageArea);
-        stage.addEntity(appleElem);
+      for ( const apple of item.apples ) {
+        const appleElem = new Entity( apple.x, apple.y, 'apple' );
+        appleElem.mount( stageArea );
+        stage.addEntity( appleElem );
       }
-      for(const bomb of item.bombs){
-        const bombElem = new Entity(bomb.x, bomb.y, 'bomb');
-        bombElem.mount(stageArea);
-        stage.addEntity(bombElem);
+      for ( const bomb of item.bombs ) {
+        const bombElem = new Entity( bomb.x, bomb.y, 'bomb' );
+        bombElem.mount( stageArea );
+        stage.addEntity( bombElem );
       }
-      
-    })
+
+    } )
 } );
