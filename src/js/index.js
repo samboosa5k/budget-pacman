@@ -5,46 +5,13 @@ const player = document.getElementById( 'player' );
 
 
 
-/*
+
 
 document.addEventListener( 'DOMContentLoaded', () => {
-  //  Player position
-  let xpos = player.offsetLeft;
+  const app = document.querySelector('#app')
+  const newPacman = new Pacman( 85, 0 );
+  const stage = new Stage(10, 10);
+  stage.mount(app);
 
-  //  Click player mouth open
-  document.addEventListener( 'keydown', ( event ) => {
-    if ( event.code === 'ArrowRight' ) {
-
-      //  Mouth opens
-      player.style.backgroundPositionX = '170px';
-
-      //  Player moves
-      xpos = xpos + TILE_SIZE;
-      player.style.left = `${xpos}px`;
-
-    }
-
-    if ( event.code === 'ArrowLeft' ) {
-      //  Mouth opens
-      player.style.backgroundPositionX = '170px';
-
-      //  Player moves
-      xpos = xpos - TILE_SIZE;
-      player.style.left = `${xpos}px`;
-    }
-  } );
-
-  //  Click reset player mouth close
-  document.addEventListener( 'keyup', ( event ) => {
-    if ( event.code === 'ArrowRight' || event.code === 'ArrowLeft' ) {
-
-      //  Mouth closes
-      player.style.backgroundPositionX = '85px';
-    }
-  } );
-
-} );
-
-*/
-
-const newPacman = new Pacman( 85, 0 );
+  
+})
