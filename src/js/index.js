@@ -30,8 +30,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
   const newPacman = new Pacman( 170, 170, 170 );
   newPacman.mount( stageArea );
 
-  console.log( stage.entities )
-  console.log( stage.collisionDetection( 1, 1 ) )
-  console.log( stage.collisionDetection( 2, 2 ) )
+  // console.log( stage.entities )
+  // console.log( stage.collisionDetection( 1, 1 ) )
+  // console.log( stage.collisionDetection( 2, 2 ) )
 
+  // bomb.unmount(stageArea)
+  stage.removeEntity(bomb);
 } );

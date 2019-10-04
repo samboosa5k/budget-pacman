@@ -27,4 +27,12 @@ class Stage{
         }
         return null;
     }
+    removeEntity(entity){
+        for(let i=0; i<this.entities.length; i++){
+            if(this.entities[i].x === entity.x && this.entities[i].y === entity.y){
+                this.entities.splice(i, 1);
+            }
+        }
+        entity.unmount(this.element);
+    }
 }
