@@ -22,8 +22,8 @@ body {
 .stage {
   width: 1020px;
   height: 510px;
-  background-image: url('/img/tile.png');
-  position: relative;
+  /* background-image: url('/img/tile.png'); */
+  z-index: -1;
 }
 
 .entity {
@@ -36,7 +36,7 @@ body {
     font-weight: bold;
     text-align: center;
     padding-top: 65px;
-    user-select: none;    
+    user-select: none;
   }
 
   &--wall {
@@ -59,8 +59,12 @@ body {
 .pacboy {
   &-active-light {
     background-image: url('/img/pacboy-active-light.png');
+<<<<<<< HEAD
     // min-width: 85px;
     // min-height:85px;
+=======
+    z-index: 999;
+>>>>>>> furtherCollision
   }
 
   &-active-medium {
