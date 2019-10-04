@@ -4,18 +4,25 @@ Notes:
 - mouth = open OR closed state
 - xpos = horizontal position
 
+- pacman will receive stage
+
 */
 
 
 class Pacman {
-    constructor( mouth, xpos, ypos ) {
+    constructor( mouth, xpos, ypos, stageParam ) {
         this.mouth = mouth;
         this.xpos = xpos;
         this.ypos = ypos;
+        this.stageParam = stageParam;
         //  Initialize
         //  Controls should get 'true' parameters by default
         //  If pacman dies, control will be set to false
         this.controls();
+    }
+
+    detectCollision() {
+        return this.stageParam.collisionDetection( this.xpos / 85, this.ypos / 85 ).type;
     }
 
     controls() {
@@ -31,13 +38,11 @@ class Pacman {
             }
 
             if ( event.code === 'ArrowUp' ) {
-
                 this.mouth = [0, 85];
                 this.moveUp();
             }
 
             if ( event.code === 'ArrowDown' ) {
-                console.log( 'down' );
                 this.mouth = [0, 170];
                 this.moveDown();
             }
@@ -67,21 +72,57 @@ class Pacman {
     }
 
     moveUp() {
-        console.log( 'up' );
         this.ypos = this.ypos - TILE_SIZE;
+
+        switch ( this.detectCollision() ) {
+            case 'wall':
+                this.ypos = this.ypos + 85;
+                break;
+            case 'apple':
+                console.log( 'apple is true' );
+                break;
+        }
+
     }
 
     moveDown() {
-        console.log( 'down' );
         this.ypos = this.ypos + TILE_SIZE;
+
+        switch ( this.detectCollision() ) {
+            case 'wall':
+                this.ypos = this.ypos - 85;
+                break;
+            case 'apple':
+                console.log( 'apple is true' );
+                break;
+        }
     }
 
     moveRight() {
         this.xpos = this.xpos + TILE_SIZE;
+
+        switch ( this.detectCollision() ) {
+            case 'wall':
+                this.xpos = this.xpos - 85;
+            case 'apple':
+                console.log( 'apple is true' );
+                break;
+
+        }
+
     }
 
     moveLeft() {
         this.xpos = this.xpos - TILE_SIZE;
+
+        switch ( this.detectCollision() ) {
+            case 'wall':
+                this.xpos = this.xpos + 85;
+                break;
+            case 'apple':
+                console.log( 'apple is true' );
+                break;
+        }
     }
 
     render() {
@@ -92,13 +133,13 @@ class Pacman {
 
     mount( parent ) {
         this.render();
-        console.log( parent );
         parent.appendChild( this.pacDiv );
     }
 
     update() {
         this.pacDiv.style.left = `${this.xpos}px`;
         this.pacDiv.style.top = `${this.ypos}px`;
+
         //  Written below changes the x/y coordinates of the pacman face sprite
         this.pacDiv.style.backgroundPositionX = `${this.mouth[0]}px`;
         this.pacDiv.style.backgroundPositionY = `${this.mouth[1]}px`;

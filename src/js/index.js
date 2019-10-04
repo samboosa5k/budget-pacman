@@ -27,7 +27,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
   bomb.mount( stageArea );
   stage.addEntity( bomb );
 
-  const newPacman = new Pacman( 170, 170, 170 );
+  const newPacman = new Pacman( 0, 0, 0, stage );
   newPacman.mount( stageArea );
 
   console.log( stage.entities )
