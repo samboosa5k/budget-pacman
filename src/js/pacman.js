@@ -8,37 +8,37 @@ Notes:
 
 
 class Pacman {
-    constructor( mouth, xpos, ypos ) {
+    constructor( mouth, xpos, ypos, stage ) {
         this.mouth = mouth;
         this.xpos = xpos;
         this.ypos = ypos;
         //  Initialize
         //  Controls should get 'true' parameters by default
         //  If pacman dies, control will be set to false
-        this.controls();
+        this.stage = stage
     }
 
     controls() {
         document.addEventListener( 'keydown', ( event ) => {
             if ( event.code === 'ArrowRight' ) {
-                this.mouth = [170, 0];
+                this.mouth = [2, 0];
                 this.moveRight();
             }
 
             if ( event.code === 'ArrowLeft' ) {
-                this.mouth = [0, -85];
+                this.mouth = [0, -1];
                 this.moveLeft();
             }
 
             if ( event.code === 'ArrowUp' ) {
 
-                this.mouth = [0, 85];
+                this.mouth = [0, 1];
                 this.moveUp();
             }
 
             if ( event.code === 'ArrowDown' ) {
                 console.log( 'down' );
-                this.mouth = [0, 170];
+                this.mouth = [0, 2];
                 this.moveDown();
             }
 
@@ -47,19 +47,19 @@ class Pacman {
 
         document.addEventListener( 'keyup', ( event ) => {
             if ( event.code === 'ArrowRight' ) {
-                this.mouth = [85, 0];
+                this.mouth = [1, 0];
             }
 
             if ( event.code === 'ArrowLeft' ) {
-                this.mouth = [85, -85];
+                this.mouth = [1, -1];
             }
 
             if ( event.code === 'ArrowUp' ) {
-                this.mouth = [85, 85];
+                this.mouth = [1, 1];
             }
 
             if ( event.code === 'ArrowDown' ) {
-                this.mouth = [85, 170];
+                this.mouth = [1, 2];
             }
 
             this.update();
@@ -68,20 +68,20 @@ class Pacman {
 
     moveUp() {
         console.log( 'up' );
-        this.ypos = this.ypos - TILE_SIZE;
+        this.ypos = this.ypos - 1;
     }
 
     moveDown() {
         console.log( 'down' );
-        this.ypos = this.ypos + TILE_SIZE;
+        this.ypos = this.ypos + 1;
     }
 
     moveRight() {
-        this.xpos = this.xpos + TILE_SIZE;
+        this.xpos = this.xpos + 1;
     }
 
     moveLeft() {
-        this.xpos = this.xpos - TILE_SIZE;
+        this.xpos = this.xpos - 1;
     }
 
     render() {
@@ -90,17 +90,16 @@ class Pacman {
         this.pacDiv.classList = 'entity entity--pac pacboy-active-light';
     }
 
-    mount( parent ) {
+    mount( ) {
         this.render();
-        console.log( parent );
-        parent.appendChild( this.pacDiv );
+        this.stage.appendChild( this.pacDiv );
     }
 
     update() {
-        this.pacDiv.style.left = `${this.xpos}px`;
-        this.pacDiv.style.top = `${this.ypos}px`;
+        this.pacDiv.style.left = `${this.xpos*85}px`;
+        this.pacDiv.style.top = `${this.ypos*85}px`;
         //  Written below changes the x/y coordinates of the pacman face sprite
-        this.pacDiv.style.backgroundPositionX = `${this.mouth[0]}px`;
-        this.pacDiv.style.backgroundPositionY = `${this.mouth[1]}px`;
+        this.pacDiv.style.backgroundPositionX = `${this.mouth[0]*85}px`;
+        this.pacDiv.style.backgroundPositionY = `${this.mouth[1]*85}px`;
     }
 }

@@ -17,7 +17,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
   stage.mount( app );
   const stageArea = document.querySelector( '.stage' );
 
-  const newPacman = new Pacman( 170, 170, 170 );
+  const newPacman = new Pacman( 170, 170, 170, stageArea );
   newPacman.mount( stageArea );
 
   // console.log( stage.entities )

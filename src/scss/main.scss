@@ -59,6 +59,8 @@ body {
 .pacboy {
   &-active-light {
     background-image: url('/img/pacboy-active-light.png');
+    // min-width: 85px;
+    // min-height:85px;
   }
 
   &-active-medium {
