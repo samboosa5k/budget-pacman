@@ -29,10 +29,12 @@ class Pacman {
             }
 
             if ( event.code === 'ArrowUp' ) {
+                this.mouth = [0, 85];
                 this.moveUp();
             }
 
             if ( event.code === 'ArrowDown' ) {
+                this.mouth = [0, 170];
                 this.moveDown();
             }
 
@@ -46,6 +48,14 @@ class Pacman {
 
             if ( event.code === 'ArrowLeft' ) {
                 this.mouth = [85, -85];
+            }
+
+            if ( event.code === 'ArrowUp' ) {
+                this.mouth = [85, 85];
+            }
+
+            if ( event.code === 'ArrowDown' ) {
+                this.mouth = [85, 170];
             }
 
             this.update();
@@ -66,6 +76,19 @@ class Pacman {
 
     moveLeft() {
         this.xpos = this.xpos - TILE_SIZE;
+    }
+
+    render() {
+        this.pacDiv = document.createElement( 'div' );
+        this.pacDiv.innerHTML =
+            `
+            <div id="player" class="entity entity--pac pacboy-active-light" style=""></div>
+            `;
+    }
+
+    mount( parent ) {
+        this.render();
+        parent.appendChild( this.pacDiv );
     }
 
     update() {
