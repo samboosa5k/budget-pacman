@@ -8,9 +8,10 @@ Notes:
 
 
 class Pacman {
-    constructor( mouth, xpos ) {
+    constructor( mouth, xpos, ypos ) {
         this.mouth = mouth;
         this.xpos = xpos;
+        this.ypos = ypos;
         //  Initialize
         this.controls();
     }
@@ -27,6 +28,14 @@ class Pacman {
                 this.moveLeft();
             }
 
+            if ( event.code === 'ArrowUp' ) {
+                this.moveUp();
+            }
+
+            if ( event.code === 'ArrowDown' ) {
+                this.moveDown();
+            }
+
             this.update();
         } );
 
@@ -39,6 +48,14 @@ class Pacman {
         } )
     }
 
+    moveUp() {
+        this.ypos = this.ypos + TILE_SIZE;
+    }
+
+    moveDown() {
+        this.ypos = this.ypos - TILE_SIZE;
+    }
+
     moveRight() {
         this.xpos = this.xpos + TILE_SIZE;
     }
@@ -49,6 +66,8 @@ class Pacman {
 
     update() {
         player.style.left = `${this.xpos}px`;
+        player.style.top = `${this.ypos}px`;
+        //  Written below changes the x/y coordinates of the pacman face sprite
         player.style.backgroundPositionX = `${this.mouth}px`;
     }
 }
