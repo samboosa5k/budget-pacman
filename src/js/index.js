@@ -2,6 +2,8 @@
 const TILE_SIZE = 85;
 //  Player selction
 const player = document.getElementById( 'player' );
+//  Env selection
+const app = document.getElementById( 'app' );
 
 
 
@@ -48,3 +50,4 @@ document.addEventListener( 'DOMContentLoaded', () => {
 */
 
 const newPacman = new Pacman( 85, 0, 0 );
+newPacman.mount( app );
