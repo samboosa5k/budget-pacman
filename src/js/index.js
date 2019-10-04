@@ -1,12 +1,13 @@
 //  Constants
 const TILE_SIZE = 85;
+//  Player selction
+const player = document.getElementById( 'player' );
 
 
+
+/*
 
 document.addEventListener( 'DOMContentLoaded', () => {
-  //  Player selction
-  const player = document.getElementById( 'player' );
-
   //  Player position
   let xpos = player.offsetLeft;
 
@@ -15,26 +16,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
     if ( event.code === 'ArrowRight' ) {
 
       //  Mouth opens
-      console.log( 'Mouth open' );
       player.style.backgroundPositionX = '170px';
 
       //  Player moves
-      console.log( 'Player is moving right' );
       xpos = xpos + TILE_SIZE;
       player.style.left = `${xpos}px`;
-      console.log( xpos );
+
     }
 
     if ( event.code === 'ArrowLeft' ) {
       //  Mouth opens
-      console.log( 'Mouth open' );
       player.style.backgroundPositionX = '170px';
 
       //  Player moves
-      console.log( 'Player is moving left' );
       xpos = xpos - TILE_SIZE;
       player.style.left = `${xpos}px`;
-      console.log( xpos );
     }
   } );
 
@@ -43,10 +39,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
     if ( event.code === 'ArrowRight' || event.code === 'ArrowLeft' ) {
 
       //  Mouth closes
-      console.log( 'Mouth closed' );
       player.style.backgroundPositionX = '85px';
     }
   } );
 
-
 } );
+
+*/
+
+const newPacman = new Pacman( 85, 0 );
