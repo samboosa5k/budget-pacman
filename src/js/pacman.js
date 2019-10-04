@@ -13,6 +13,8 @@ class Pacman {
         this.xpos = xpos;
         this.ypos = ypos;
         //  Initialize
+        //  Controls should get 'true' parameters by default
+        //  If pacman dies, control will be set to false
         this.controls();
     }
 
@@ -29,11 +31,13 @@ class Pacman {
             }
 
             if ( event.code === 'ArrowUp' ) {
+
                 this.mouth = [0, 85];
                 this.moveUp();
             }
 
             if ( event.code === 'ArrowDown' ) {
+                console.log( 'down' );
                 this.mouth = [0, 170];
                 this.moveDown();
             }
@@ -63,10 +67,12 @@ class Pacman {
     }
 
     moveUp() {
+        console.log( 'up' );
         this.ypos = this.ypos - TILE_SIZE;
     }
 
     moveDown() {
+        console.log( 'down' );
         this.ypos = this.ypos + TILE_SIZE;
     }
 
@@ -80,22 +86,21 @@ class Pacman {
 
     render() {
         this.pacDiv = document.createElement( 'div' );
-        this.pacDiv.innerHTML =
-            `
-            <div id="player" class="entity entity--pac pacboy-active-light" style=""></div>
-            `;
+        this.pacDiv.id = 'player';
+        this.pacDiv.classList = 'entity entity--pac pacboy-active-light';
     }
 
     mount( parent ) {
         this.render();
+        console.log( parent );
         parent.appendChild( this.pacDiv );
     }
 
     update() {
-        player.style.left = `${this.xpos}px`;
-        player.style.top = `${this.ypos}px`;
+        this.pacDiv.style.left = `${this.xpos}px`;
+        this.pacDiv.style.top = `${this.ypos}px`;
         //  Written below changes the x/y coordinates of the pacman face sprite
-        player.style.backgroundPositionX = `${this.mouth[0]}px`;
-        player.style.backgroundPositionY = `${this.mouth[1]}px`;
+        this.pacDiv.style.backgroundPositionX = `${this.mouth[0]}px`;
+        this.pacDiv.style.backgroundPositionY = `${this.mouth[1]}px`;
     }
 }
