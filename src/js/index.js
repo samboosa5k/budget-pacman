@@ -47,4 +47,4 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 */
 
-const newPacman = new Pacman( 85, 0 );
+const newPacman = new Pacman( 85, 0, 0 );

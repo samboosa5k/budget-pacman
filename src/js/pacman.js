@@ -19,12 +19,12 @@ class Pacman {
     controls() {
         document.addEventListener( 'keydown', ( event ) => {
             if ( event.code === 'ArrowRight' ) {
-                this.mouth = 170;
+                this.mouth = [170, 0];
                 this.moveRight();
             }
 
             if ( event.code === 'ArrowLeft' ) {
-                this.mouth = 170;
+                this.mouth = [0, -85];
                 this.moveLeft();
             }
 
@@ -40,8 +40,12 @@ class Pacman {
         } );
 
         document.addEventListener( 'keyup', ( event ) => {
-            if ( event.code === 'ArrowRight' || event.code === 'ArrowLeft' ) {
-                this.mouth = 85;
+            if ( event.code === 'ArrowRight' ) {
+                this.mouth = [85, 0];
+            }
+
+            if ( event.code === 'ArrowLeft' ) {
+                this.mouth = [85, -85];
             }
 
             this.update();
@@ -49,11 +53,11 @@ class Pacman {
     }
 
     moveUp() {
-        this.ypos = this.ypos + TILE_SIZE;
+        this.ypos = this.ypos - TILE_SIZE;
     }
 
     moveDown() {
-        this.ypos = this.ypos - TILE_SIZE;
+        this.ypos = this.ypos + TILE_SIZE;
     }
 
     moveRight() {
@@ -68,6 +72,7 @@ class Pacman {
         player.style.left = `${this.xpos}px`;
         player.style.top = `${this.ypos}px`;
         //  Written below changes the x/y coordinates of the pacman face sprite
-        player.style.backgroundPositionX = `${this.mouth}px`;
+        player.style.backgroundPositionX = `${this.mouth[0]}px`;
+        player.style.backgroundPositionY = `${this.mouth[1]}px`;
     }
 }
