@@ -28,23 +28,23 @@ class Pacman {
     controls() {
         document.addEventListener( 'keydown', ( event ) => {
             if ( event.code === 'ArrowRight' ) {
-                this.mouth = [170, 0];
                 this.moveRight();
+                this.mouth = [170, 0];
             }
 
             if ( event.code === 'ArrowLeft' ) {
-                this.mouth = [0, -85];
                 this.moveLeft();
+                this.mouth = [0, -85];
             }
 
             if ( event.code === 'ArrowUp' ) {
-                this.mouth = [0, 85];
                 this.moveUp();
+                this.mouth = [0, 85];
             }
 
             if ( event.code === 'ArrowDown' ) {
-                this.mouth = [0, 170];
                 this.moveDown();
+                this.mouth = [0, 170];
             }
 
             this.update();
