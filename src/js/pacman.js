@@ -88,6 +88,8 @@ class Pacman {
                 break;
             case 'bomb':
                 console.log( 'bomb hit' );
+                document.body.querySelector( '.stage' ).remove();
+                document.body.innerHTML = '<h1 style="font-size: 100px;">YOU LOSE!</h1>';
                 this.pacDiv.style.display = 'none';
 
         }
@@ -107,6 +109,8 @@ class Pacman {
                 break;
             case 'bomb':
                 console.log( 'bomb hit' );
+                document.body.querySelector( '.stage' ).remove();
+                document.body.innerHTML = '<h1 style="font-size: 100px;">YOU LOSE!</h1>';
                 this.pacDiv.style.display = 'none';
         }
     }
@@ -123,6 +127,8 @@ class Pacman {
                 break;
             case 'bomb':
                 console.log( 'bomb hit' );
+                document.body.querySelector( '.stage' ).remove();
+                document.body.innerHTML = '<h1 style="font-size: 100px;">YOU LOSE!</h1>';
                 this.pacDiv.style.display = 'none';
         }
     }
@@ -140,6 +146,8 @@ class Pacman {
                 break;
             case 'bomb':
                 console.log( 'bomb hit' );
+                document.body.querySelector( '.stage' ).remove();
+                document.body.innerHTML = '<h1 style="font-size: 100px;">YOU LOSE!</h1>';
                 this.pacDiv.style.display = 'none';
         }
     }
